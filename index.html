@@ -44,19 +44,19 @@ h1{font-size:22px;font-weight:700}
 <div class="top"><h1>내 앱 모음</h1><button class="re" id="re">새로 확인</button></div>
 <p class="sub">앱을 업데이트하면 여기 버전이 저절로 바뀌어요</p>
 <div id="list"></div>
-<button id="ver">v1.0</button>
+<button id="ver">v1.1</button>
 <div class="sheet" id="sh"><div class="box">
-<h2>내 앱 모음 <span id="v2">v1.0</span></h2>
+<h2>내 앱 모음 <span id="v2">v1.1</span></h2>
 <p id="st">지금 보는 버전이 최신이에요</p>
 <h3>업데이트 내용</h3>
-<ul><li>11/27 — 앱 7개를 한곳에서 보고 받을 수 있어요</li></ul>
+<ul><li>11/27 — 버튼 이름을 '웹페이지'로 바꿨어요</li><li>11/27 — 앱 7개를 한곳에서 보고 받을 수 있어요</li></ul>
 <h3>개인정보</h3>
 <p>이 페이지는 아무 정보도 모으지 않아요. 앱 버전을 확인할 때만 GitHub에 접속해요.</p>
 <div class="act"><button id="chk">새 버전 확인</button><button id="cl">닫기</button></div>
 </div></div>
 <script>
 "use strict";
-const VER="1.0",OWNER="mini-2026",BASE="https://"+OWNER+".github.io/";
+const VER="1.1",OWNER="mini-2026",BASE="https://"+OWNER+".github.io/";
 const APPS=[
 ["gyoche-check","챙김이","교체할 때를 챙겨 주는 앱","app.html","#2f6f4f"],
 ["dumpu","덤푸","먼슬리·위클리 플래너","app/","#5b5bd6"],
@@ -72,7 +72,7 @@ function card(a){
  ic.style.background=col;t.append(el("div","nm",n),el("div","ds",d));
  const m=el("div","meta","버전 확인 중…");m.id="m-"+r;t.append(m);row.append(ic,t);
  const b=el("div","btns"),dl=el("a","dl","다운로드");dl.href=BASE+r+"/";b.append(dl);
- if(ios){const i=el("a","ios","아이폰 웹앱");i.href=BASE+r+"/"+ios;b.append(i)}
+ if(ios){const i=el("a","ios","웹페이지");i.href=BASE+r+"/"+ios;b.append(i)}
  c.append(row,b);return c}
 function show(r,v){const m=$("m-"+r);if(!m)return;m.textContent="";
  if(!v){m.textContent="버전을 확인하지 못했어요";return}
