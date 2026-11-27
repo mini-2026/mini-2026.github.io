@@ -18,7 +18,7 @@ h1{font-size:22px;font-weight:700}
 .re{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;font-size:13px;color:var(--ink)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
 .row{display:flex;align-items:center;gap:12px}
-.ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;flex:none}
+.ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;flex:none;overflow:hidden;position:relative}.ic img{position:absolute;inset:0;width:100%;height:100%}
 .nm{font-size:16px;font-weight:600}
 .ds{font-size:13px;color:var(--sub);margin-top:2px}
 .meta{font-size:12px;color:var(--sub);margin-top:4px}
@@ -44,19 +44,19 @@ h1{font-size:22px;font-weight:700}
 <div class="top"><h1>내 앱 모음</h1><button class="re" id="re">새로 확인</button></div>
 <p class="sub">앱을 업데이트하면 여기 버전이 저절로 바뀌어요</p>
 <div id="list"></div>
-<button id="ver">v1.1</button>
+<button id="ver">v1.2</button>
 <div class="sheet" id="sh"><div class="box">
-<h2>내 앱 모음 <span id="v2">v1.1</span></h2>
+<h2>내 앱 모음 <span id="v2">v1.2</span></h2>
 <p id="st">지금 보는 버전이 최신이에요</p>
 <h3>업데이트 내용</h3>
-<ul><li>11/27 — 버튼 이름을 '웹페이지'로 바꿨어요</li><li>11/27 — 앱 7개를 한곳에서 보고 받을 수 있어요</li></ul>
+<ul><li>11/27 — 앱마다 진짜 아이콘이 보여요</li><li>11/27 — 버튼 이름을 '웹페이지'로 바꿨어요</li><li>11/27 — 앱 7개를 한곳에서 보고 받을 수 있어요</li></ul>
 <h3>개인정보</h3>
 <p>이 페이지는 아무 정보도 모으지 않아요. 앱 버전을 확인할 때만 GitHub에 접속해요.</p>
 <div class="act"><button id="chk">새 버전 확인</button><button id="cl">닫기</button></div>
 </div></div>
 <script>
 "use strict";
-const VER="1.1",OWNER="mini-2026",BASE="https://"+OWNER+".github.io/";
+const VER="1.2",OWNER="mini-2026",BASE="https://"+OWNER+".github.io/";
 const APPS=[
 ["gyoche-check","챙김이","교체할 때를 챙겨 주는 앱","app.html","#2f6f4f"],
 ["dumpu","덤푸","먼슬리·위클리 플래너","app/","#5b5bd6"],
@@ -69,7 +69,7 @@ const $=id=>document.getElementById(id),KEY="hub-rel",TTL=6e5;
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function card(a){
  const [r,n,d,ios,col]=a,c=el("div","card"),row=el("div","row"),ic=el("div","ic",n[0]),t=el("div");
- ic.style.background=col;t.append(el("div","nm",n),el("div","ds",d));
+ ic.style.background=col;const im=new Image();im.alt="";im.src="icons/"+r+".png";im.onerror=()=>im.remove();ic.append(im);t.append(el("div","nm",n),el("div","ds",d));
  const m=el("div","meta","버전 확인 중…");m.id="m-"+r;t.append(m);row.append(ic,t);
  const b=el("div","btns"),dl=el("a","dl","다운로드");dl.href=BASE+r+"/";b.append(dl);
  if(ios){const i=el("a","ios","웹페이지");i.href=BASE+r+"/"+ios;b.append(i)}
